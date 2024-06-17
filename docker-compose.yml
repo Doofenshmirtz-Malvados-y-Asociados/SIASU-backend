@@ -1,0 +1,73 @@
+services:
+  postgres:
+    hostname: ${POSTGRES_CONTAINER_NAME}
+    image: postgres:alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - '${POSTGRES_PORT}:5432'
+  mongodb:
+    hostname: ${MONGODB_CONTAINER_NAME}
+    image: mongodb/mongodb-community-server
+    restart: always
+    ports:
+      - '${MONGODB_PORT}:27017'
+    environment:
+      - MONGODB_INITDB_ROOT_USERNAME=${MONGODB_INITDB_ROOT_USERNAME}
+      - MONGODB_INITDB_ROOT_PASSWORD=${MONGODB_INITDB_ROOT_PASSWORD}
+    volumes:
+      - mongodb:/data/db
+  auth-ms:
+    hostname: ${AUTH_MS_CONTAINER_NAME}
+    depends_on:
+      - postgres
+    restart: always
+    build:
+      context: ./SIASU-auth
+      dockerfile: Dockerfile
+    ports:
+      - '3001:3001'
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+  comments-ms:
+    hostname: ${COMMENTS_MS_CONTAINER_NAME}
+    depends_on:
+      - mongodb
+    restart: always
+    build:
+      context: ./SIASU-comments
+      dockerfile: Dockerfile
+    ports:
+      - '4520:4520'
+    environment:
+      - DATABASE_URL=${MONGODB_DATABASE_URL}
+  responses-ms:
+    hostname: ${RESPONSES_MS_CONTAINER_NAME}
+    depends_on:
+      - mongodb
+    restart: always
+    build:
+      context: ./SIASU-responses
+      dockerfile: Dockerfile
+    ports:
+      - '4510:4510'
+    environment:
+      - DATABASE_URL=${MONGODB_DATABASE_URL}
+  gateway:
+    hostname: ${GATEWAY_CONTAINER_NAME}
+    depends_on:
+      - postgres
+    restart: always
+    build:
+      context: ./SIASU-gateway
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+volumes:
+  postgres:
+  mongodb:

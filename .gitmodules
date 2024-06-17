@@ -1,0 +1,12 @@
+[submodule "SIASU-comments"]
+	path = SIASU-comments
+	url = git@github.com:Doofenshmirtz-Malvados-y-Asociados/SIASU-comments.git
+[submodule "SIASU-responses"]
+	path = SIASU-responses
+	url = git@github.com:Doofenshmirtz-Malvados-y-Asociados/SIASU-responses.git
+[submodule "SIASU-auth"]
+	path = SIASU-auth
+	url = git@github.com:Doofenshmirtz-Malvados-y-Asociados/SIASU-auth.git
+[submodule "SIASU-gateway"]
+	path = SIASU-gateway
+	url = git@github.com:Doofenshmirtz-Malvados-y-Asociados/SIASU-gateway.git
