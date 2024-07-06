@@ -10,3 +10,6 @@
 [submodule "SIASU-gateway"]
 	path = SIASU-gateway
 	url = git@github.com:Doofenshmirtz-Malvados-y-Asociados/SIASU-gateway.git
+[submodule "SIASU-logic"]
+	path = SIASU-logic
+	url = git@github.com:Doofenshmirtz-Malvados-y-Asociados/SIASU-logic.git

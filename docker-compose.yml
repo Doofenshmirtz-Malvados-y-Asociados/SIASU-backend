@@ -22,6 +22,18 @@ services:
       - MONGODB_INITDB_ROOT_PASSWORD=${MONGODB_INITDB_ROOT_PASSWORD}
     volumes:
       - mongodb:/data/db
+  logic-ms:
+    hostname: ${LOGIC_MS_CONTAINER_NAME}
+    depends_on:
+      - postgres
+    restart: always
+    build:
+      context: ./SIASU-logic
+      dockerfile: Dockerfile
+    ports:
+      - '4530:4530'
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
   auth-ms:
     hostname: ${AUTH_MS_CONTAINER_NAME}
     depends_on:
