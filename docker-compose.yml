@@ -11,6 +11,15 @@ services:
       - postgres:/var/lib/postgresql/data
     ports:
       - '${POSTGRES_PORT}:5432'
+  # pgadmin:
+  #   hostname: pgadmin
+  #   image: dpage/pgadmin4
+  #   restart: always
+  #   environment:
+  #     - PGADMIN_DEFAULT_EMAIL=isaac.benavides@alumnos.udg.mx
+  #     - PGADMIN_DEFAULT_PASSWORD=cisco123
+  #   ports:
+  #     - "8888:80"
   mongodb:
     hostname: ${MONGODB_CONTAINER_NAME}
     image: mongodb/mongodb-community-server
@@ -78,6 +87,16 @@ services:
       - DATABASE_URL=${MONGODB_DATABASE_URL}
     volumes: 
       - ./SIASU-responses/src:/usr/src/app/src
+  utils-ms:
+    hostname: ${UTILS_MS_CONTAINER_NAME}
+    restart: always
+    build:
+      context: ./SIASU-utils
+      dockerfile: Dockerfile
+    ports:
+      - '8000:8000'
+    volumes:
+      - ./SIASU-utils/src:/code/src
   gateway:
     hostname: ${GATEWAY_CONTAINER_NAME}
     depends_on:
