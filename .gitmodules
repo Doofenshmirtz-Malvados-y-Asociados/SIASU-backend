@@ -16,3 +16,6 @@
 [submodule "SIASU-utils"]
 	path = SIASU-utils
 	url = git@github.com:Doofenshmirtz-Malvados-y-Asociados/SIASU-utils.git
+[submodule "SIASU-ai"]
+	path = SIASU-ai
+	url = git@github.com:Doofenshmirtz-Malvados-y-Asociados/SIASU-ai.git

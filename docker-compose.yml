@@ -97,6 +97,16 @@ services:
       - '8000:8000'
     volumes:
       - ./SIASU-utils/src:/code/src
+  ai-ms:
+    hostname: ${AI_MS_CONTAINER_NAME}
+    restart: always
+    build:
+      context: ./SIASU-ai
+      dockerfile: Dockerfile
+    ports:
+      - '8001:8001'
+    volumes:
+      - ./SIASU-ai/src:/code/src
   gateway:
     hostname: ${GATEWAY_CONTAINER_NAME}
     depends_on:
