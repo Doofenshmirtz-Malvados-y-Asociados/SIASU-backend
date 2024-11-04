@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: C:\Users\jonhy\Downloads\kompose convert
+    kompose.version: 1.34.0 (cbf2835db)
+  labels:
+    io.kompose.service: ai-ms
+  name: ai-ms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: ai-ms
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: C:\Users\jonhy\Downloads\kompose convert
+        kompose.version: 1.34.0 (cbf2835db)
+      labels:
+        io.kompose.service: ai-ms
+    spec:
+      containers:
+        - image: ai-ms
+          imagePullPolicy: Never
+          name: ai-ms
+          ports:
+            - containerPort: 8001
+              protocol: TCP
+      restartPolicy: Always
