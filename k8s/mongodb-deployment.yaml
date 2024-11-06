@@ -23,11 +23,9 @@ spec:
         io.kompose.service: mongodb
     spec:
       containers:
-        - env:
-            - name: MONGODB_INITDB_ROOT_PASSWORD
-              value: "cisco123"
-            - name: MONGODB_INITDB_ROOT_USERNAME
-              value: "admin"
+        - envFrom:
+          - secretRef:
+              name: siasu-secrets
           image: mongodb/mongodb-community-server
           name: mongodb
           ports:

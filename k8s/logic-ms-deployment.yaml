@@ -23,9 +23,9 @@ spec:
         io.kompose.service: logic-ms
     spec:
       containers:
-        - env:
-            - name: DATABASE_URL
-              value: "postgresql://postgres:cisco123@postgres:5432/siasu?schema=public"
+        - envFrom:
+          - secretRef:
+              name: siasu-secrets
           image: logic-ms
           imagePullPolicy: Never
           name: logic-ms

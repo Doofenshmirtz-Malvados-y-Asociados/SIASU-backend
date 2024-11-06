@@ -23,9 +23,9 @@ spec:
         io.kompose.service: responses-ms
     spec:
       containers:
-        - env:
-            - name: DATABASE_URL
-              value: "mongodb://admin:cisco123@mongodb:27017"
+        - envFrom:
+          - secretRef:
+              name: siasu-secrets
           image: responses-ms
           imagePullPolicy: Never
           name: responses-ms

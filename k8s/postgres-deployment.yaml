@@ -23,14 +23,7 @@ spec:
         io.kompose.service: postgres
     spec:
       containers:
-        - env:
-            - name: POSTGRES_USER
-              value: "postgres"
-            - name: POSTGRES_PASSWORD
-              value: "cisco123"
-            - name: POSTGRES_DB
-              value: "siasu"
-          image: docker.io/library/postgres:16-alpine
+        - image: docker.io/library/postgres:16-alpine
           name: postgres
           ports:
             - containerPort: 5432
@@ -38,6 +31,9 @@ spec:
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: postgres
+          envFrom:
+          - secretRef:
+              name: siasu-secrets
       restartPolicy: Always
       volumes:
         - name: postgres
