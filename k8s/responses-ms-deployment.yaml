@@ -26,8 +26,8 @@ spec:
         - envFrom:
           - secretRef:
               name: siasu-secrets
-          image: responses-ms
-          imagePullPolicy: Never
+          image: us-west1-docker.pkg.dev/siasu-440922/siasu-cr/responses-ms
+          imagePullPolicy: IfNotPresent
           name: responses-ms
           ports:
             - containerPort: 4510

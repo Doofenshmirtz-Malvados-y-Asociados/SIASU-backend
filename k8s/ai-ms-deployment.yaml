@@ -23,8 +23,8 @@ spec:
         io.kompose.service: ai-ms
     spec:
       containers:
-        - image: ai-ms
-          imagePullPolicy: Never
+        - image: us-west1-docker.pkg.dev/siasu-440922/siasu-cr/ai-ms
+          imagePullPolicy: IfNotPresent
           name: ai-ms
           ports:
             - containerPort: 8001

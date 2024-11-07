@@ -23,10 +23,10 @@ spec:
         io.kompose.service: utils-ms
     spec:
       containers:
-        - image: utils-ms
-          imagePullPolicy: Never
+        - image: us-west1-docker.pkg.dev/siasu-440922/siasu-cr/utils-ms
           name: utils-ms
           ports:
             - containerPort: 8000
               protocol: TCP
+          imagePullPolicy: IfNotPresent
       restartPolicy: Always

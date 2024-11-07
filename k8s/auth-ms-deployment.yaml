@@ -26,8 +26,8 @@ spec:
         - envFrom:
           - secretRef:
               name: siasu-secrets
-          image: auth-ms
-          imagePullPolicy: Never
+          image: us-west1-docker.pkg.dev/siasu-440922/siasu-cr/auth-ms
+          imagePullPolicy: IfNotPresent
           name: auth-ms
           ports:
             - containerPort: 3001

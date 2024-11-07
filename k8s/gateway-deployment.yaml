@@ -23,8 +23,8 @@ spec:
         io.kompose.service: gateway
     spec:
       containers:
-        - image: gateway
-          imagePullPolicy: Never
+        - image: us-west1-docker.pkg.dev/siasu-440922/siasu-cr/gateway
+          imagePullPolicy: IfNotPresent
           name: gateway
           ports:
             - containerPort: 3000
