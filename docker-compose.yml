@@ -70,7 +70,7 @@ services:
     ports:
       - '4520:4520'
     environment:
-      - DATABASE_URL=${MONGODB_DATABASE_URL}
+      - MONGODB_DATABASE_URL=${MONGODB_DATABASE_URL}
     volumes: 
       - ./SIASU-comments/src:/usr/src/app/src
   responses-ms:
@@ -84,7 +84,7 @@ services:
     ports:
       - '4510:4510'
     environment:
-      - DATABASE_URL=${MONGODB_DATABASE_URL}
+      - MONGODB_DATABASE_URL=${MONGODB_DATABASE_URL}
     volumes: 
       - ./SIASU-responses/src:/usr/src/app/src
   utils-ms:
