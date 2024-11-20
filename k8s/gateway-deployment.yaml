@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - image: us-west1-docker.pkg.dev/siasu-440922/siasu-cr/gateway
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           name: gateway
           ports:
             - containerPort: 3000

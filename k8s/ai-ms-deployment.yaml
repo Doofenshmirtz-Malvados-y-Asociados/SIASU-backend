@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - image: us-west1-docker.pkg.dev/siasu-440922/siasu-cr/ai-ms
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           name: ai-ms
           ports:
             - containerPort: 8001

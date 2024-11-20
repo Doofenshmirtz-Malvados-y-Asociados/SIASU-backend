@@ -28,5 +28,5 @@ spec:
           ports:
             - containerPort: 8000
               protocol: TCP
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
       restartPolicy: Always

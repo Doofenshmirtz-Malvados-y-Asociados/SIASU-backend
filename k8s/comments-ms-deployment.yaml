@@ -27,7 +27,7 @@ spec:
           - secretRef:
               name: siasu-secrets
           image: us-west1-docker.pkg.dev/siasu-440922/siasu-cr/comments-ms
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           name: comments-ms
           ports:
             - containerPort: 4520
